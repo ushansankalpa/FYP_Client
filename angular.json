@@ -117,5 +117,7 @@
       }
     }
   },
-  "defaultProject": "learningRes_RecMaster"
+  "cli": {
+    "analytics": false
+  }
 }

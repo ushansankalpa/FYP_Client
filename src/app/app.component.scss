@@ -1,0 +1,358 @@
+// #main {
+//     transition: margin-left .5s;
+//     padding: 16px;
+//     margin-left:200px;
+// }
+
+///////////////////////////////////////////
+
+// .example-container {
+//     position: absolute;
+//     top: 60px;
+//     bottom: 60px;
+//     left: 0;
+//     right: 0;
+//   }
+  
+//   .example-sidenav {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     width: 300px;
+//     background: rgba(61, 77, 255, 0.5);
+//   }
+  
+//   .example-header {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//   }
+  
+//   .example-footer {
+//     position: fixed;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//   }
+
+
+/////////////////////////////////////
+/// 
+/// 
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap');
+#wrapper{
+    display: flex;
+  }
+  
+  #sidebar{
+    @mixin smoothTrans {
+        -webkit-transition: all 0.3s ease-in-out;
+            -ms-transition: all 0.3s ease-in-out;
+                transition: all 0.3s ease-in-out;
+      };
+   background-color: #00204A;
+   background: linear-gradient(180deg, #0072C0 15%, #00204A 100%);
+   width: 300px;
+   .header{
+     text-align: center;
+     img{
+       margin: 20px 0;
+       @mixin smoothTrans {
+        -webkit-transition: all 0.3s ease-in-out;
+            -ms-transition: all 0.3s ease-in-out;
+                transition: all 0.3s ease-in-out;
+      };
+     }
+     .logoSmall{
+       width: 28px;
+       display: none;
+     }
+   }
+  }
+   .divider{
+     display: block;
+     border-bottom: 1px solid rgba(255,255,255,0.10);
+     width: 170px;
+     margin: 0 auto;
+   }
+  
+  .userArea{
+    padding: 16px 0;
+    max-width: 160px;
+    margin: 0 auto;
+    .userPicture{
+        @mixin smoothTrans {
+            -webkit-transition: all 0.3s ease-in-out;
+                -ms-transition: all 0.3s ease-in-out;
+                    transition: all 0.3s ease-in-out;
+          };
+      margin: 0 auto;
+      border-radius: 100%;
+      max-width: 54px;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      border: 2px solid #D9FAFF;
+      -webkit-box-shadow: 0px 1px 10px 0px rgba(43,52,70,0.3);
+      -moz-box-shadow: 0px 1px 10px 0px rgba(43,52,70,0.3);
+      box-shadow: 0px 1px 10px 0px rgba(43,52,70,0.3);
+      &:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+      img {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -ms-transform:translateY(-50%);
+        width: 100%;
+      }
+    }
+    .userName{
+      color: #ffffff;
+      font-size: 0.88em;
+      text-align: center;
+      margin-top: 12px;
+      font-weight: 600;
+      line-height: 1.3;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .accountMenu{
+      color: #ffffff;
+      opacity: 0.5;
+      font-size: 1.2em;
+      text-align: center;
+      @mixin smoothTrans {
+        -webkit-transition: all 0.3s ease-in-out;
+            -ms-transition: all 0.3s ease-in-out;
+                transition: all 0.3s ease-in-out;
+      };
+      margin: 6px auto;
+      display: block;
+      &:hover, &.active{
+        opacity: 1;
+        text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+      }
+      .menu{
+        left: 31px;
+        .item{
+          color: #00204A;
+          @mixin smoothTrans {
+            -webkit-transition: all 0.3s ease-in-out;
+                -ms-transition: all 0.3s ease-in-out;
+                    transition: all 0.3s ease-in-out;
+          };
+          &:hover{
+            color: #00204A;
+          }
+        }
+      }
+    }
+  }
+  
+  ul.navigation{
+    list-style-type: none;
+    margin-top:22px;
+    padding: 0;
+    li{
+        cursor: pointer;
+      p{
+        font-size: 1.1em;
+        padding:11px 24px;
+        color: #ffffff;
+        display: block;
+        border-left:3px solid transparent;
+        @mixin smoothTrans {
+            -webkit-transition: all 0.3s ease-in-out;
+                -ms-transition: all 0.3s ease-in-out;
+                    transition: all 0.3s ease-in-out;
+          };
+        &:hover, &.active{
+          background-color: rgba(0,32,74, 0.4);
+        }
+        &.active{
+          border-color: #45EBA5;
+          color: #45EBA5;
+          svg{
+            fill: #45EBA5;
+          }
+        }
+        i{
+          margin-right: 12px;
+        }
+        span{
+          visibility: visible;
+          opacity: 1;
+          -webkit-transition: opacity 0.2s, visibility 0.2s;
+          transition: opacity 0.2s, visibility 0.2s;
+          -ms-transition: opacity 0.2s, visibility 0.2s;
+        }
+      }
+    } 
+    .divider{
+      margin: 12px auto;
+    }
+  }
+  .expandBtn{
+    color: #ffffff;
+    font-size: 1em;
+    text-align: center;
+    position: absolute;
+    bottom: 6px;
+    width: 218px;
+    i{
+      cursor: pointer;
+      padding:20px;
+      opacity: 0.5;
+      @mixin smoothTrans {
+        -webkit-transition: all 0.3s ease-in-out;
+            -ms-transition: all 0.3s ease-in-out;
+                transition: all 0.3s ease-in-out;
+      };
+      &:hover{
+        opacity: 1;
+        text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+        transform: scale(1.2, 1.2);
+        -webkit-transform: scale(1.2, 1.2);
+        -ms-transform:scale(1.2, 1.2);
+      }
+    }
+  }
+  
+  #side-bar.collapsed {
+      min-width: 64px;
+      max-width: 64px;
+      ul.navigation{
+        li {
+          a{
+            padding: 11px 20px;
+          }
+          span{
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            -webkit-transition: opacity 0.2s, visibility 0.2s;
+            transition: opacity 0.2s, visibility 0.2s;
+            -ms-transition: opacity 0.2s, visibility 0.2s
+        }
+        }
+      }
+      .expandBtn{
+        width:64px;
+      }
+      .divider{
+        width: 20px;
+        display: block;
+      }
+      .userPicture{
+        transform: scale(0.8, 0.8);
+        -webkit-transform: scale(0.8, 0.8);
+        -ms-transform:scale(0.8, 0.8);
+      }
+      .logoSmall{
+        display: block;
+        margin: 20px auto;
+      }
+      .logoLarge{
+        display: none;
+      }
+      .userArea{
+        padding: 16px 4px;
+        .userName{
+          font-size: 0.75em;
+        }
+      }
+      .userArea .accountMenu{
+        position: relative;
+        left: 0;
+      }
+  }
+
+.expandBtn.collapsed{
+    position: relative;
+    text-align: left;
+}
+
+  .head-title{
+    color: #ffffff;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 22px;
+  }
+
+  .side-nav-content{
+    flex: 1;
+    height: 100%;
+    overflow-y: auto;
+    padding: 0 0 0 0;
+    box-sizing: border-box;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .toolbar-header{
+    background-color: #0072C0;
+    color: #ffffff;
+    font-size: 1rem;
+    
+  }
+
+  .side-navbar{
+    .ng-sidenav ::ng-deep{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+        background-color: linear-gradient(180deg, #0072C0 15%, #00204A 100%);
+    }
+  }
+  
+
+  .example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .example-is-mobile .example-toolbar {
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+  }
+  
+  h1.example-app-name {
+    margin-left: 8px;
+    font-family: 'Cinzel', serif;
+    font-size: 1.9rem;
+  }
+  
+  .example-sidenav-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 1;
+  }
+  
+  .example-is-mobile .example-sidenav-container {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+       `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+  }
+
+  .sidenav-bar{
+    background-color: #0072C0;
+    overflow: hidden;
+    width: 250px;
+  }
+  
