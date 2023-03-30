@@ -10,6 +10,11 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+import {RatingModule} from 'primeng/rating';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -25,8 +30,12 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
-    AppRoutingModule
-    
+    AppRoutingModule,
+    MatSidenavModule,
+    MatIconModule,
+    RatingModule,
+    MatToolbarModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
