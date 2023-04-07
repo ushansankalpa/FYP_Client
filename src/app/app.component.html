@@ -65,7 +65,7 @@
         <h1 class="example-app-name">PreferLearn Master</h1>
         <span class="example-spacer"></span>
   
-          <!-- <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
             <mat-icon style="font-size: 25px;">account_circle</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
@@ -73,7 +73,7 @@
               <mat-icon>logout</mat-icon>
               <span>Sign out</span>
             </button>
-          </mat-menu> -->
+          </mat-menu>
   
           
   
@@ -99,13 +99,19 @@
                                 Home
                               </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" >
+                              <a routerLink="/lsidentifertest/" routerLinkActive="active" class="nav-link text-white" aria-current="page">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+                                Test
+                              </a>
+                            </li>
+                            <li class="nav-item" *ngIf="userRole === 'admin'">
                               <a routerLink="/lsidentifertest/" routerLinkActive="active" class="nav-link text-white" aria-current="page">
                                 <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
                                 Dashboard
                               </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" *ngIf="userRole === 'admin'">
                               <a routerLink="/lsidentifertests/" routerLinkActive="active" class="nav-link text-white">
                                 <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
                                 Orders
@@ -125,7 +131,7 @@
                             </li>
                           </ul>
                           <hr>
-                          <div class="dropdown">
+                          <!-- <div class="dropdown">
                             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                               <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
                               <strong>mdo</strong>
@@ -137,12 +143,9 @@
                               <li><hr class="dropdown-divider"></li>
                               <li><a class="dropdown-item" href="#">Sign out</a></li>
                             </ul>
-                          </div>
+                          </div> -->
                         </div>
-                      
-                    
-                        
-                      
+
                     </nav>
         </mat-sidenav>
     

@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import {MediaMatcher} from '@angular/cdk/layout';
+import { AuthenticationService } from './_services';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ import {MediaMatcher} from '@angular/cdk/layout';
 })
 export class AppComponent {
   title = 'learningRes_RecMaster';
+  userRole: any;
   public collapsed = false;
   //title = 'techqweb';
 
@@ -29,7 +31,7 @@ export class AppComponent {
     this.collapsed = !this.collapsed
   }
 
-	constructor(private router: Router,changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+	constructor(private router: Router,changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,private authenticationService: AuthenticationService,) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -37,6 +39,7 @@ export class AppComponent {
 	}
 
   ngOnInit() {
+    this.userRole = localStorage.getItem('userRole');
     
     // this.router.events.pipe(
     //   filter((e): e is NavigationEnd => e instanceof NavigationEnd),
@@ -86,7 +89,7 @@ export class AppComponent {
   }
 
   logOut(){
-    localStorage.removeItem('user_id');
+    this.authenticationService.logout();
     this.router.navigate(['/']);
   }
 }

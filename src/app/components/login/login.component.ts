@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginService } from './login.service';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { filter, first, map, Observable } from 'rxjs';
+import { AuthenticationService } from 'src/app/_services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +13,83 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  form!: FormGroup;
+  user: any = null;
+
+  constructor(private fb: FormBuilder,protected loginService: LoginService,private router: Router,
+                private cd: ChangeDetectorRef,
+                private authenticationService: AuthenticationService,) { }
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      email: [[], [Validators.required]],
+      password: [[], [Validators.required]],
+    });
+
+  }
+
+  // login(){
+  //   console.error(this.form.value);
+  // }
+
+  login(){
+    const object = this.createSaveObject();
+    return  this.loginService
+        .login(object)
+        .pipe(
+            filter((res: HttpResponse<any>) => res.ok),
+            map((res: HttpResponse<any>) => res.body)
+        ).subscribe(
+            (res: any) => {
+              this.user = res;
+              if(this.user){
+                localStorage.setItem('user_id', this.user.data.user_id);
+                localStorage.setItem('user', JSON.stringify(this.user.data));
+                this.router.navigate(['/home']);
+              }
+            },
+            (res: HttpErrorResponse) => this.onRequestError(res.message)
+        );
+  }
+
+  send() {
+    let credentials = {email: this.form.controls['email'].value, password: this.form.controls['password'].value};
+    this.authenticationService.login(credentials, '/user/login')
+        .pipe(first())
+        .subscribe(
+            data => {
+                debugger
+                const userRole = localStorage.getItem('userRole');
+                console.log('sucessed navitaging to home page !');
+                if (userRole === 'user') {
+                  if(data.id){
+                    if (data.id !== undefined) {
+                      localStorage.setItem('user_id', data.id.toString());
+                    }
+                    localStorage.setItem('user', JSON.stringify(data));
+                    this.router.navigate(['/home']);
+                  }
+                } else if (data.authorities?.includes('admin')) {
+                    this.router.navigate(['/dashboard']);
+                }
+                //this.router.navigate(['/mod']);
+                
+                
+            },
+            error => {
+                console.log('error');
+            });
+}
+
+  protected onRequestError(res:any){
+  
+  }
+
+  createSaveObject() {
+    const obj: any = {};
+    obj.email = this.form.get('email')?.value;
+    obj.password = this.form.get('password')?.value;
+    return obj;
   }
 
 }

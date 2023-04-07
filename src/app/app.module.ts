@@ -15,7 +15,13 @@ import {MatIconModule} from '@angular/material/icon';
 import {RatingModule} from 'primeng/rating';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
-
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {ToastModule} from 'primeng/toast';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,13 +35,20 @@ import {MatMenuModule} from '@angular/material/menu';
   ],
   imports: [
     BrowserAnimationsModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     MatSidenavModule,
     MatIconModule,
     RatingModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    ToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]
