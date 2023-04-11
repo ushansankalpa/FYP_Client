@@ -5,11 +5,13 @@ import { LoginService } from './login.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { filter, first, map, Observable } from 'rxjs';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  providers: [MessageService]
 })
 export class LoginComponent implements OnInit {
 
@@ -18,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder,protected loginService: LoginService,private router: Router,
                 private cd: ChangeDetectorRef,
-                private authenticationService: AuthenticationService,) { }
+                private authenticationService: AuthenticationService,private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -67,7 +69,9 @@ export class LoginComponent implements OnInit {
                       localStorage.setItem('user_id', data.id.toString());
                     }
                     localStorage.setItem('user', JSON.stringify(data));
+                    this.messageService.add({severity:'success', summary:'Register Successfully', detail:'Your Registration is Successfully'});
                     this.router.navigate(['/home']);
+                    
                   }
                 } else if (data.authorities?.includes('admin')) {
                     this.router.navigate(['/dashboard']);

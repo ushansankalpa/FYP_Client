@@ -17,6 +17,7 @@ export class User {
     authorities?: string[];
     token?: string;
     role?: string;
+    access_token?: User;
 }
 
 

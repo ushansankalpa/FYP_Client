@@ -34,9 +34,17 @@ const routes: Routes = [
   }
   
 ];
+routes.push({path: '**', redirectTo: ''});
+export const appRoutingModule = RouterModule.forRoot(routes);
+
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    // preloadingStrategy: PreloadAllModules,
+    scrollPositionRestoration: 'enabled',
+    relativeLinkResolution: 'corrected',
+    anchorScrolling: 'enabled'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

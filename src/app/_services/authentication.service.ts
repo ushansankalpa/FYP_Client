@@ -9,7 +9,7 @@ import { User } from '../model/user';
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
-    private currentUserSubject!: BehaviorSubject<User>;
+    private currentUserSubject!: BehaviorSubject<any>;
     public currentUser!: Observable<User>;
     public userDataFromToken!: User;
 
@@ -27,7 +27,7 @@ export class AuthenticationService {
          }
     }
 
-    public get currentUserValue(): User {
+    public get currentUserValue() {
         return this.currentUserSubject.value;
     }
 
@@ -43,7 +43,7 @@ export class AuthenticationService {
                 debugger
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
-                //this.currentUserSubject.next(user);
+                this.currentUserSubject.next(user);
                 this.userDataFromToken = this.getUserDetails(user.access_token);
                 //this.userDataFromToken.authorities = ['user'];
                 if (this.userDataFromToken.role !== undefined) {
@@ -64,6 +64,6 @@ export class AuthenticationService {
         localStorage.removeItem('currentUser');
         localStorage.removeItem('userRole');
         localStorage.removeItem('user_id');
-        //this.currentUserSubject.next(null);
+        this.currentUserSubject.next(null);
     }
 }
