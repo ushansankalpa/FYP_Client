@@ -6,6 +6,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './_helpers/auth.guard';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { RecommendationComponent } from './components/recommendation/recommendation.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -22,6 +25,30 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {
       role: 'user'
+    }
+  },
+  {
+    path:'recommendations',
+    component: RecommendationComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'user'
+    }
+  },
+  {
+    path:'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'user'
+    }
+  },
+  {
+    path:'dashboard',
+    component: AdminDashboardComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'admin'
     }
   },
   {

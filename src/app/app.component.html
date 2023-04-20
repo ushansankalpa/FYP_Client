@@ -93,40 +93,46 @@
                           </a> -->
                           <hr>
                           <ul class="nav nav-pills flex-column mb-auto">
-                            <li class="nav-item">
+                            <li class="nav-item" *ngIf="userRole === 'user'">
                               <a routerLink="/home/" routerLinkActive="active" class="nav-link text-white" aria-current="page">
                                 <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
                                 Home
                               </a>
                             </li>
-                            <li class="nav-item" >
-                              <a routerLink="/lsidentifertest/" routerLinkActive="active" class="nav-link text-white" aria-current="page">
+                            <li class="nav-item" *ngIf="userRole === 'user'">
+                              <a routerLink="/recommendations/" routerLinkActive="active" class="nav-link text-white" aria-current="page">
                                 <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+                                Recommendations
+                              </a>
+                            </li>
+                            <li class="nav-item" *ngIf="userRole === 'user'">
+                              <a routerLink="/lsidentifertest/" routerLinkActive="active" class="nav-link text-white" aria-current="page">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#gear-fill"/></svg>
                                 Test
                               </a>
                             </li>
                             <li class="nav-item" *ngIf="userRole === 'admin'">
-                              <a routerLink="/lsidentifertest/" routerLinkActive="active" class="nav-link text-white" aria-current="page">
-                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+                              <a routerLink="/dashboard/" routerLinkActive="active" class="nav-link text-white" aria-current="page">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
                                 Dashboard
                               </a>
                             </li>
                             <li class="nav-item" *ngIf="userRole === 'admin'">
                               <a routerLink="/lsidentifertests/" routerLinkActive="active" class="nav-link text-white">
                                 <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-                                Orders
+                                Train Model
                               </a>
                             </li>
-                            <li>
-                              <a routerLink="/lsidentifertestss/" routerLinkActive="active" class="nav-link text-white">
-                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
-                                Products
-                              </a>
-                            </li>
-                            <li>
-                              <a routerLink="/lsidentifertestss/" routerLinkActive="active" class="nav-link text-white">
+                            <li class="nav-item" *ngIf="userRole === 'user'">
+                              <a routerLink="/profile/" routerLinkActive="active" class="nav-link text-white">
                                 <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
-                                Customers
+                                Profile
+                              </a>
+                            </li>
+                            <li class="nav-item" *ngIf="userRole === 'admin'">
+                              <a routerLink="/lsidentifertestssd/" routerLinkActive="active" class="nav-link text-white">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#tools"/></svg>
+                                Insert Data
                               </a>
                             </li>
                           </ul>

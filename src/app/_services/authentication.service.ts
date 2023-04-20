@@ -14,7 +14,6 @@ export class AuthenticationService {
     public userDataFromToken!: User;
 
     constructor(private http: HttpClient) {
-        debugger
         const currentUserJson = localStorage.getItem('currentUser');
         const currentUser = currentUserJson ? JSON.parse(currentUserJson) : null;
         this.currentUserSubject = new BehaviorSubject<User>(currentUser);
@@ -22,7 +21,6 @@ export class AuthenticationService {
         //this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')?? ''));
         this.currentUser = this.currentUserSubject.asObservable();
         if (this.currentUserValue && this.currentUserValue.token) {
-            debugger
              this.userDataFromToken = this.getUserDetails(this.currentUserValue.token);
          }
     }
@@ -40,7 +38,6 @@ export class AuthenticationService {
     login(credentials: any, authPath: string) {
         return this.http.post<any>(`${environment.apiUrl}/user/login`, credentials, this.httpOptions)
             .pipe(map(user => {
-                debugger
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 this.currentUserSubject.next(user);

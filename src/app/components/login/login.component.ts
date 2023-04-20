@@ -6,12 +6,14 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { filter, first, map, Observable } from 'rxjs';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { MessageService } from 'primeng/api';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [MessageService]
+  providers: [MessageService, Location]
 })
 export class LoginComponent implements OnInit {
 
@@ -19,7 +21,7 @@ export class LoginComponent implements OnInit {
   user: any = null;
 
   constructor(private fb: FormBuilder,protected loginService: LoginService,private router: Router,
-                private cd: ChangeDetectorRef,
+                private cd: ChangeDetectorRef,private location: Location,
                 private authenticationService: AuthenticationService,private messageService: MessageService) { }
 
   ngOnInit(): void {
@@ -60,7 +62,6 @@ export class LoginComponent implements OnInit {
         .pipe(first())
         .subscribe(
             data => {
-                debugger
                 const userRole = localStorage.getItem('userRole');
                 console.log('sucessed navitaging to home page !');
                 if (userRole === 'user') {
@@ -71,14 +72,11 @@ export class LoginComponent implements OnInit {
                     localStorage.setItem('user', JSON.stringify(data));
                     this.messageService.add({severity:'success', summary:'Register Successfully', detail:'Your Registration is Successfully'});
                     this.router.navigate(['/home']);
-                    
                   }
                 } else if (data.authorities?.includes('admin')) {
                     this.router.navigate(['/dashboard']);
                 }
-                //this.router.navigate(['/mod']);
-                
-                
+                //this.router.navigate(['/mod']);   
             },
             error => {
                 console.log('error');

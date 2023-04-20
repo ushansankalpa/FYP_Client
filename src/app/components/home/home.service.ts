@@ -23,9 +23,9 @@ export class HomeService {
     //      return this.http.get<any>(`${environment.apiUrl}/api/questions`, { params: req, observe: 'response' });
     //    }
 
-    // createQuestion(data: any, id:any): Observable<EntityResponseType> {
-    //     return this.http.post<any>(`${environment.apiUrl}/api/quesion/create/${id}`, data, { observe: 'response' });
-    // }
+    createRating(data: any, res_id:any, user_id:any): Observable<EntityResponseType> {
+        return this.http.post<any>(`${environment.apiUrl}/res/rate/${res_id}/${user_id}`, data, { observe: 'response' });
+    }
 
     // createAnswers(data: any, id:any): Observable<EntityResponseType> {
     //     return this.http.post<any>(`${environment.apiUrl}/api/answers/create/${id}`, data, { observe: 'response' });

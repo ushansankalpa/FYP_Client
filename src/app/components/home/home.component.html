@@ -9,158 +9,76 @@
   </div>
 </header> -->
 
-<main>
+<!-- <main>
   <div class="album py-5 bg-light">
     <div class="container">
-
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
         <div class="col" *ngFor="let resource of resources">
           <div class="card shadow-sm">
             <img [src]="resource.image" alt="Resource Image" style="height: 200px;" class="bd-placeholder-img card-img-top">
             <h2 style="text-align: center;">{{ resource.title }}</h2>
-            <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
             <div class="card-body">
               <p class="card-text">{{ resource.desc | slice:0:150}}{{ resource.desc.length > 150 ? '...' : '' }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <p-rating   [stars]="10"></p-rating>
-                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
                 </div>
                 <small class="text-muted">Rating</small>
               </div>
             </div>
           </div>
         </div>
-        <!-- <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
+</main> -->
 
-</main>
+<!-- <div class="card">
+  <p-dataView #dv [value]="resources" [paginator]="true" [rows]="9" filterBy="name"
+      [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
+      <ng-template pTemplate="header">
+          <div class="flex flex-column md:flex-row md:justify-content-between">
+              <span class="p-input-icon-left mb-2 md:mb-0">
+                  <i class="pi pi-search"></i>
+                  <input type="search" pInputText placeholder="Search by Name" >
+              </span>
+              <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+          </div>
+      </ng-template>
+      <ng-template let-product pTemplate="listItem">
+          <div class="p-col-12">
+              <div class="product-list-item">
+                  <div class="product-list-detail">
+                      <div class="product-name">{{product.title}}</div>
+                      <img [src]="product.image" alt="Resource Image" style="height: 200px; width: 200px;" class="bd-placeholder-img card-img-top">
+                      <div class="product-description">{{product.desc}}</div>
+                      <p-rating  [stars]="10"></p-rating>
+                  </div>
+              </div>
+          </div>
+      </ng-template>
+      <ng-template let-product pTemplate="gridItem">
+          <div class="col-12 md:col-4">
+              <div class="product-grid-item card">
+                  <div class="product-grid-item-top">
+                      <div>
+                          <i class="pi pi-tag product-category-icon"></i>
+                          <span class="product-category">{{product.title}}</span>
+                      </div>
+                      
+                  </div>
+                  <div class="product-grid-item-content">
+                      <div class="product-name">{{product.title}}</div>
+                      <img [src]="product.image" alt="Resource Image" style="height: 200px;width: 200px;" class="bd-placeholder-img card-img-top">
+                      <div class="product-description">{{product.desc}}</div>
+                      <p-rating  [stars]="10"></p-rating>
+                  </div>
+              </div>
+          </div>
+      </ng-template>
+  </p-dataView> -->
 
-<footer class="text-muted py-5">
+<!-- <footer class="text-muted py-5">
   <div class="container">
     <p class="float-end mb-1">
       <a href="#">Back to top</a>
@@ -168,4 +86,54 @@
     <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
     <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="/docs/5.3/getting-started/introduction/">getting started guide</a>.</p>
   </div>
-</footer>
+</footer> -->
+<p-toast></p-toast>
+<div class="card">
+  <p-dataView #dv [value]="resources" [paginator]="true" [rows]="9" filterBy="name"
+      [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
+      <ng-template pTemplate="header">
+          <div class="flex flex-column md:flex-row md:justify-content-between">
+              <p-dropdown [options]="sortOptions"  placeholder="Sort By Price"  styleClass="mb-2 md:mb-0"></p-dropdown>
+              <span class="p-input-icon-left mb-2 md:mb-0">
+                  <i class="pi pi-search"></i>
+                  <input type="search" pInputText placeholder="Search by Name" >
+              </span>
+              <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+          </div>
+      </ng-template>
+      <ng-template let-product pTemplate="listItem">
+          <div class="p-col-12">
+              <div class="product-list-item">
+                  <div class="product-list-detail">
+                      <div class="product-name">{{product.title}}</div>
+                      <img [src]="product.image" alt="Resource Image" style="height: 200px;width: 200px;" class="bd-placeholder-img card-img-top">
+                      <div class="product-description">{{product.desc}}</div>
+                      <p-rating  [stars]="10"  (onRate)="resRatings($event, product.res_id)" (onCancel)="handleOnCancel()"></p-rating>
+                      <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{product.type}}</span>
+                  </div>
+              </div>
+          </div>
+      </ng-template>
+      <ng-template let-product pTemplate="gridItem">
+          <div class="col-12 md:col-4">
+              <div class="product-grid-item card">
+                  <div class="product-grid-item-top">
+                      <div>
+                          <i class="pi pi-tag product-category-icon"></i>
+                          <span class="product-category">{{product.field}}</span>
+                      </div>
+                      <span [class]="'product-badge status-' + product.type.toLowerCase()">{{product.type}}</span>
+                  </div>
+                  <div class="product-grid-item-content">
+                      <div class="product-name">{{product.title}}</div>
+                      <img [src]="product.image" alt="Resource Image" style="height: 200px;width: 200px;" class="bd-placeholder-img card-img-top">
+                      <div class="product-description">{{product.desc}}</div>
+                      <p-rating  [stars]="10"  (onRate)="resRatings($event,product.res_id)" (onCancel)="handleOnCancel()"></p-rating>
+                  </div>
+                  <div class="product-grid-item-bottom">
+                  </div>
+              </div>
+          </div>
+      </ng-template>
+  </p-dataView>
+</div>

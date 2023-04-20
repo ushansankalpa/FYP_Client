@@ -23,6 +23,18 @@ import {MatButtonModule} from '@angular/material/button';
 import {ToastModule} from 'primeng/toast';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ErrorInterceptor, JwtInterceptor } from './_helpers';
+import {DataViewModule} from 'primeng/dataview';
+import {ButtonModule} from 'primeng/button';
+import {PanelModule} from 'primeng/panel';
+import {DropdownModule} from 'primeng/dropdown';
+import {DialogModule} from 'primeng/dialog';
+import {InputTextModule} from 'primeng/inputtext';
+import {RippleModule} from 'primeng/ripple';
+import { FormsModule } from '@angular/forms';
+import { RecommendationComponent } from './components/recommendation/recommendation.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { Location } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -32,7 +44,9 @@ import { ErrorInterceptor, JwtInterceptor } from './_helpers';
     LoginComponent,
     RegisterComponent,
     AdminDashboardComponent,
-    NavBarComponent
+    NavBarComponent,
+    RecommendationComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -49,7 +63,16 @@ import { ErrorInterceptor, JwtInterceptor } from './_helpers';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
-    ToastModule
+    ToastModule,
+    DataViewModule,
+    PanelModule,
+    InputTextModule,
+    RippleModule,
+    ButtonModule,
+    DialogModule,
+    DropdownModule,
+    FormsModule,
+    CommonModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
