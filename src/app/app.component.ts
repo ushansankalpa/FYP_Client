@@ -22,6 +22,7 @@ export class AppComponent {
 
   isExpanded = true;
   state = 'collapsed';
+  username:string;
 
   mobileQuery!: MediaQueryList;
   private _mobileQueryListener!: () => void;
@@ -35,11 +36,13 @@ export class AppComponent {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
-		
+		this.userRole = localStorage.getItem('userRole');
+    this.username = localStorage.getItem('user_name');
 	}
 
   ngOnInit() {
     this.userRole = localStorage.getItem('userRole');
+    this.username = localStorage.getItem('user_name');
     
     // this.router.events.pipe(
     //   filter((e): e is NavigationEnd => e instanceof NavigationEnd),
@@ -68,6 +71,11 @@ export class AppComponent {
 		// 			window.scrollTo(0, 0);
 		// 		}, 100)
 		// 	});
+  }
+
+  refreshNavbar(){
+    this.userRole = localStorage.getItem('userRole');
+    this.username = localStorage.getItem('user_name');
   }
 
 

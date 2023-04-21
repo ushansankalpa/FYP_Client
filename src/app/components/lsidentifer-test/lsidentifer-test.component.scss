@@ -1,0 +1,101 @@
+// #rateThisArticle{
+// 	width: 1800px;
+// }
+
+// #rateThisArticle fieldset{
+// 	padding: 30px 48px 50px 48px;		/**/
+// }
+
+// #rateThisArticle legend{
+// 	margin: 0 0 0 -2.5em;		/**/
+// }
+
+// form#rateThisArticle label{
+// 	display: inline;
+// 	font-weight: bold;
+// }
+
+// #rateThisArticle table{
+// 	margin: 0;
+// 	border-collapse: collapse;
+// }
+
+// #rateThisArticle th{
+// 	padding: 4px 5px 2px 5px;
+// 	text-align: left;
+// 	border: 1px solid #AAA;
+// 	background-color: #DDD;
+// }
+
+// #rateThisArticle td{
+// 	padding: 6px 5px 6px 5px;
+// 	text-align: left;
+// 	border: 1px solid #AAA;
+// }
+
+// #rateThisArticle .colQuestion{
+// 	width: 350px;
+// 	text-align: left;
+// }
+
+
+/* Responsive Styles */
+
+/* Reduce font size for smaller screens */
+@media (max-width: 768px) {
+  table {
+    font-size: 14px;
+  }
+}
+
+/* Reduce table width for smaller screens */
+@media (max-width: 576px) {
+  table {
+    width: 100%;
+  }
+}
+
+/* Strong Styles */
+
+/* Heading Styles */
+table thead tr th {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+/* Column Styles */
+table thead tr th[id^="col"] {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  background-color: #d9d9d9;
+}
+
+/* Question Styles */
+table tbody tr td.colQuestion {
+  font-size: 16px;
+  padding: 10px;
+  vertical-align: middle;
+  background-color: #f9f9f9;
+}
+
+/* Radio Button Styles */
+table tbody tr td input[type="radio"] {
+  margin: 0;
+  vertical-align: middle;
+}
+
+/* Radio Button Label Styles */
+table tbody tr td label {
+  margin: 0 10px;
+  font-size: 16px;
+}
+
+/* Hover Styles */
+table tbody tr:hover {
+  background-color: #e6f2ff;
+}

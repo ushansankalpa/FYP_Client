@@ -8,6 +8,7 @@ import { AuthenticationService } from 'src/app/_services/authentication.service'
 import { MessageService } from 'primeng/api';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { Location } from '@angular/common';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder,protected loginService: LoginService,private router: Router,
                 private cd: ChangeDetectorRef,private location: Location,
-                private authenticationService: AuthenticationService,private messageService: MessageService) { }
+                private authenticationService: AuthenticationService,private messageService: MessageService,
+                private appComponent:AppComponent) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -68,13 +70,25 @@ export class LoginComponent implements OnInit {
                   if(data.id){
                     if (data.id !== undefined) {
                       localStorage.setItem('user_id', data.id.toString());
+                      localStorage.setItem('user_name', data.fullname.toString());
                     }
                     localStorage.setItem('user', JSON.stringify(data));
-                    this.messageService.add({severity:'success', summary:'Register Successfully', detail:'Your Registration is Successfully'});
+                    this.messageService.add({severity:'success', summary:'Login Successfully', detail:'Your Login is Successfully'});
+                    this.appComponent.refreshNavbar();
                     this.router.navigate(['/home']);
                   }
-                } else if (data.authorities?.includes('admin')) {
+                } else if (userRole === 'admin') {
+                  if(data.id){
+                    if (data.id !== undefined) {
+                      localStorage.setItem('user_id', data.id.toString());
+                      localStorage.setItem('user_name', data.fullname.toString());
+                    }
+                    localStorage.setItem('user', JSON.stringify(data));
+                    this.messageService.add({severity:'success', summary:'Login Successfully', detail:'Your Login is Successfully'});
+                    this.appComponent.refreshNavbar();
                     this.router.navigate(['/dashboard']);
+                  }
+                    
                 }
                 //this.router.navigate(['/mod']);   
             },

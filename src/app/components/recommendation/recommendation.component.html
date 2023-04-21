@@ -1,1 +1,67 @@
-<p>recommendation works!</p>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+<p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+
+<p-toast></p-toast>
+<div class="card">
+  <p-dataView #dv [value]="resources" [paginator]="true" [rows]="9" filterBy="name"
+      [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
+      <ng-template pTemplate="header">
+          <div class="flex  md:flex-row md:justify-content-between">
+              <p-dropdown [options]="sortOptions"  placeholder="Sort By Price"  styleClass="mb-2 md:mb-0"></p-dropdown>
+              <span class="p-input-icon-left mb-2 md:mb-0">
+                  <i class="pi pi-search"></i>
+                  <input type="search" pInputText placeholder="Search by Name" >
+              </span>
+              <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+          </div>
+      </ng-template>
+      <ng-template let-product pTemplate="listItem">
+          <div class="p-col-12">
+              <div class="product-list-item">
+                  <div class="product-list-detail">
+                      <div class="product-name">{{product.title}}</div>
+                      <img [src]="product.image" alt="Resource Image" style="height: 200px;width: 200px;" class="bd-placeholder-img card-img-top">
+                      <div class="product-description">{{ product.desc | slice:0:220}}{{ product.desc.length > 220 ? '...' : '' }}</div>
+                      <p-rating  [stars]="10" [(ngModel)]="product.rating" (onRate)="resRatings($event, product.res_id)" (onCancel)="handleOnCancel()"></p-rating>
+                      <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{product.type}}</span>
+                  </div>
+                  <div class="product-grid-item-bottom" style="justify-content: center;">
+                    <div style="justify-content: center; margin-top: 10px;">
+                        <a href="{{product.link}}">show</a>
+                    </div> 
+                  </div>
+              </div>
+          </div>
+      </ng-template>
+      <ng-template let-product pTemplate="gridItem">
+          <div class="md:col-4">
+              <div class="product-grid-item card">
+                  <div class="product-grid-item-top">
+                      <div>
+                          <i class="pi pi-tag product-category-icon"></i>
+                          <span class="product-category">{{product.field}}</span>
+                      </div>
+                      <span [class]="'product-badge status-' + product.type.toLowerCase()">{{product.type}}</span>
+                  </div>
+                  <div class="product-grid-item-content">
+                      <div class="product-name">{{ product.title | slice:0:25}}{{ product.title.length > 150 ? '...' : '' }}</div>
+                      <img [src]="product.image" alt="Resource Image" style="height: 200px;width: 200px;" class="bd-placeholder-img card-img-top">
+                      <div class="product-description">{{ product.desc | slice:0:150}}{{ product.desc.length > 150 ? '...' : '' }}</div>
+                      <p-rating  [stars]="10" [(ngModel)]="product.rating"  (onRate)="resRatings($event,product.res_id)" (onCancel)="handleOnCancel()"></p-rating>
+                  </div>
+                  <div class="product-grid-item-bottom" style="justify-content: center;">
+                    <div style="justify-content: center; margin-top: 10px;">
+                        <a href="{{product.link}}">show</a>
+                    </div> 
+                  </div>
+              </div>
+          </div>
+      </ng-template>
+  </p-dataView>
+</div>

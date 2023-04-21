@@ -62,5 +62,6 @@ export class AuthenticationService {
         localStorage.removeItem('userRole');
         localStorage.removeItem('user_id');
         this.currentUserSubject.next(null);
+        window.location.reload();
     }
 }

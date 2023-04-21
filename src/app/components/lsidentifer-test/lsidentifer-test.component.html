@@ -1,120 +1,40 @@
 <div class="container pt-3">
-    <div style="text-align: center; align-items: center;">
+  <p-toast></p-toast>
+    <div >
         <div class="card">
-            <div class="card-header">
-              Test
-            </div>
+            
             <div class="card-body">
-                <div>
-                    <h2 class="card-title">I learn better by reading what the teacher writes on the chalkboard</h2>
-                    <p class="card-text">
-                        <p-rating iconOnClass="pi pi-circle-fill" iconOffClass="pi pi-circle" [cancel]="false"></p-rating>
-                    </p>
-                </div>
 
-                <div>
-                    <h2 class="card-title">When I read instructions, I remember them better.</h2>
-                    <p class="card-text">
-                        <p-rating iconOnClass="pi pi-circle-fill" iconOffClass="pi pi-circle" [cancel]="false"></p-rating>
-                    </p>
-                </div>
+                <table cellspacing="1">
+                    <thead>
+                      <tr>
+                        <th class="colQuestion" style="width:630px"><br /><br />Question</th>
+                        <th id="col1" style="width:130px">Strongly<br />Disagree<br />1</th>
+                        <th id="col2" style="width:130px"><br />Disagree<br />2</th>
+                        <th id="col3" style="width:130px"><br />Neither<br />3</th>
+                        <th id="col4" style="width:130px"><br />Agree<br />4</th>
+                        <th id="col5" style="width:130px">Strongly<br />Agree<br />5</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let question of questionsArray; let i = index">
+                        <td class="colQuestion">{{ question }}</td>
+                        <td style="text-align: center;"><input type="radio" name="responseToQuestion{{i+1}}" [ngModel]="responsesArray[i]" (ngModelChange)="getRadioValue(i, $event)" value="1"></td>
+                        <td style="text-align: center;"><input type="radio" name="responseToQuestion{{i+1}}" [ngModel]="responsesArray[i]" (ngModelChange)="getRadioValue(i, $event)" value="2"></td>
+                        <td style="text-align: center;"><input type="radio" name="responseToQuestion{{i+1}}" [ngModel]="responsesArray[i]" (ngModelChange)="getRadioValue(i, $event)" value="3"></td>
+                        <td style="text-align: center;"><input type="radio" name="responseToQuestion{{i+1}}" [ngModel]="responsesArray[i]" (ngModelChange)="getRadioValue(i, $event)" value="4"></td>
+                        <td style="text-align: center;"><input type="radio" name="responseToQuestion{{i+1}}" [ngModel]="responsesArray[i]" (ngModelChange)="getRadioValue(i, $event)" value="5"></td>
+                      </tr>
+                    </tbody>
+                  </table>
 
-                <div>
-                    <h2 class="card-title">I understand better when I read instructions.</h2>
-                    <p class="card-text">
-                        <p-rating iconOnClass="pi pi-circle-fill" iconOffClass="pi pi-circle" [cancel]="false"></p-rating>
-                    </p>
-                </div>
-
-                <div>
-                    <h2 class="card-title">I learn better by reading than by listening to someone.</h2>
-                    <p class="card-text">
-                        <p-rating iconOnClass="pi pi-circle-fill" iconOffClass="pi pi-circle" [cancel]="false"></p-rating>
-                    </p>
-                </div>
-
-                <div>
-                    <h2 class="card-title">I learn more by reading textbooks than by listening to lectures.</h2>
-                    <p class="card-text">
-                        <p-rating iconOnClass="pi pi-circle-fill" iconOffClass="pi pi-circle" [cancel]="false"></p-rating>
-                    </p>
-                </div>
-
-                <div>
-                    <h2 class="card-title">When the teacher tells me the instructions I understand better</h2>
-                    <p class="card-text">
-                        <p-rating iconOnClass="pi pi-circle-fill" iconOffClass="pi pi-circle" [cancel]="false"></p-rating>
-                    </p>
-                </div>
-
-                <div>
-                    <h2 class="card-title">When someone tells me how to do something in class, I learn it better.</h2>
-                    <p class="card-text">
-                        <p-rating iconOnClass="pi pi-circle-fill" iconOffClass="pi pi-circle" [cancel]="false"></p-rating>
-                    </p>
-                </div>
-
-                <div>
-                    <h2 class="card-title">I remember things I have heard in class better than things I have read.</h2>
-                    <p class="card-text">
-                        <p-rating iconOnClass="pi pi-circle-fill" iconOffClass="pi pi-circle" [cancel]="false"></p-rating>
-                    </p>
-                </div>
-
-                <div>
-                    <h2 class="card-title">I learn better in class when the teacher gives a lecture.</h2>
-                    <p class="card-text">
-                        <p-rating iconOnClass="pi pi-circle-fill" iconOffClass="pi pi-circle" [cancel]="false"></p-rating>
-                    </p>
-                </div>
-
-                <div>
-                    <h2 class="card-title">I learn better in class when I listen to someone.</h2>
-                    <p class="card-text">
-                        <p-rating iconOnClass="pi pi-circle-fill" iconOffClass="pi pi-circle" [cancel]="false"></p-rating>
-                    </p>
-                </div>
-
-                <div>
-                    <h2 class="card-title">I prefer to learn by doing something in class.</h2>
-                    <p class="card-text">
-                        <p-rating iconOnClass="pi pi-circle-fill" iconOffClass="pi pi-circle" [cancel]="false"></p-rating>
-                    </p>
-                </div>
-
-                <div>
-                    <h2 class="card-title">When I do things in class, I learn better.</h2>
-                    <p class="card-text">
-                        <p-rating iconOnClass="pi pi-circle-fill" iconOffClass="pi pi-circle" [cancel]="false"></p-rating>
-                    </p>
-                </div>
-
-
-                <div>
-                    <h2 class="card-title">I enjoy learning in class by doing experiments.</h2>
-                    <p class="card-text">
-                        <p-rating iconOnClass="pi pi-circle-fill" iconOffClass="pi pi-circle" [cancel]="false"></p-rating>
-                    </p>
-                </div>
-
-                <div>
-                    <h2 class="card-title">I understand things better in class when I participate in role-playing.</h2>
-                    <p class="card-text">
-                        <p-rating iconOnClass="pi pi-circle-fill" iconOffClass="pi pi-circle" [cancel]="false"></p-rating>
-                    </p>
-                </div>
-
-                <div>
-                    <h2 class="card-title">I understand things better in class when I participate in role-playing.</h2>
-                    <p class="card-text">
-                        <p-rating iconOnClass="pi pi-circle-fill" iconOffClass="pi pi-circle" [cancel]="false"></p-rating>
-                    </p>
-                </div>
-
-
-              <a href="#" class="btn btn-primary">SUBMIT</a>
+                  <div style="text-align: right; margin-top: 10px;">
+                    <button (click)="postResult()" [disabled]="!enableBtn" style="padding: 10px 100px 10px 100px;" pButton type="button" class="p-button-raised p-button-rounded"> submit</button>
+                  </div>
             </div>
         </div>
     </div>
 </div>
+
+
 

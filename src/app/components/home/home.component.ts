@@ -6,6 +6,7 @@ import { SelectItem } from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { FormBuilder } from '@angular/forms';
+import { NgxSpinnerService } from "ngx-spinner";
 
 
 @Component({
@@ -25,17 +26,29 @@ export class HomeComponent implements OnInit {
   sortField!: string;
 
   constructor(private homeService: HomeService,private primengConfig: PrimeNGConfig,private ms: MessageService,
-    private fb: FormBuilder,) { }
+    private fb: FormBuilder,private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     // this.homeService.get_all_resources().subscribe((response: HttpResponse<any>) => {
     //   this.resources = response.body;
     // });
+    
     this.primengConfig.ripple = true;
     this.getData();
+    // setTimeout(() => {
+    //   /** spinner ends after 5 seconds */
+    //   this.spinner.hide();
+      
+    // }, 1000);
+  }
+
+  filter(event: Event) {
+    const value = (event.target as HTMLInputElement).value;
+    // filter your data based on the value here
   }
 
   getData() {
+    this.spinner.show();
     return  this.homeService
         .get_all_resources()
         .pipe(
@@ -49,6 +62,7 @@ export class HomeComponent implements OnInit {
 
   protected onRequestSuccess(res:any){
     this.resources = res;
+    this.spinner.hide();
   }
   
   protected onRequestError(res:any){

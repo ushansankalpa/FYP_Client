@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -35,6 +35,7 @@ import { RecommendationComponent } from './components/recommendation/recommendat
 import { ProfileComponent } from './components/profile/profile.component';
 import { Location } from '@angular/common';
 import { CommonModule } from '@angular/common';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -72,12 +73,14 @@ import { CommonModule } from '@angular/common';
     DialogModule,
     DropdownModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    NgxSpinnerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }
