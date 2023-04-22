@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^14.2.12",
     "@angular/router": "^14.2.12",
     "@fullcalendar/core": "4.4.0",
+    "@swimlane/ngx-charts": "^12.1.0",
     "@types/jasmine": "^4.3.0",
     "@types/jasminewd2": "^2.0.10",
     "@types/node": "^18.7.13",

@@ -1,31 +1,45 @@
-<div class="container-fluid">
+<div class="container-fluid" style="margin-bottom: 6%;">
     <div class="row">
         <div class="col-md-4">
-            <div class="card">
-                <h3>Users</h3>
-                <p>Number of registered users: 100</p>
-                <div class="card-footer">
-                    <a href="#">View details</a>
-                </div>
+            <div class="card" style="background-color: #90EE90;padding-bottom: 40px;">
+                <h1>Users</h1>
+                <h3>Number of registered users: {{users}}</h3>
+                <!-- <div class="card-footer"> -->
+                    <!-- <a href="#">View details</a> -->
+                <!-- </div> -->
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card">
-                <h3>Orders</h3>
-                <p>Number of pending orders: 10</p>
-                <div class="card-footer">
-                    <a href="#">View details</a>
-                </div>
+            <div class="card" style="background-color: #FA8072; padding-bottom: 40px;" >
+                <h1>Recources</h1>
+                <h3>Number of recources: {{res}}</h3>
+                <!-- <div class="card-footer"> -->
+                    <!-- <a href="#">View details</a> -->
+                <!-- </div> -->
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card">
-                <h3>Revenue</h3>
-                <p>Total revenue: $1,000</p>
-                <div class="card-footer">
-                    <a href="#">View details</a>
-                </div>
+            <div class="card" style="background-color: #FF7F50;padding-bottom: 40px;">
+                <h1>Ratings</h1>
+                <h3>Number of ratings</h3>
+                <!-- <div class="card-footer"> -->
+                    <!-- <a href="#">View details</a> -->
+                <!-- </div> -->
             </div>
         </div>
     </div>
 </div>
+
+<ngx-charts-bar-vertical
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [legend]="showLegend"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              >
+</ngx-charts-bar-vertical>

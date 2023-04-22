@@ -36,6 +36,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { Location } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     DropdownModule,
     FormsModule,
     CommonModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgxChartsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
