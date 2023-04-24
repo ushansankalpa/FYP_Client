@@ -1,0 +1,39 @@
+<div class="container">
+    <form [formGroup]="resourceForm" (ngSubmit)="onSubmit()" class="my-4 p-4 border border-secondary rounded">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" class="form-control" formControlName="title">
+        </div>
+      
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" formControlName="desc"></textarea>
+        </div>
+      
+        <div class="form-group">
+          <label>Link</label>
+          <input type="text" class="form-control" formControlName="link">
+        </div>
+      
+        <div class="form-group">
+          <label>Image</label>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" accept=".png, .jpg, .jpeg" (change)="onImageSelected($event)" formControlName="image">
+            <label class="custom-file-label">{{ resourceForm.get('image').value?.name || 'Choose file' }}</label>
+          </div>
+          <img [src]="imagePreview" *ngIf="imagePreview" class="img-fluid mt-2">
+        </div>
+      
+        <div class="form-group">
+          <label>Type</label>
+          <input type="text" class="form-control" formControlName="type">
+        </div>
+      
+        <div class="form-group">
+          <label>Field</label>
+          <input type="text" class="form-control" formControlName="field">
+        </div>
+      
+        <button type="submit" class="btn btn-primary" [disabled]="!resourceForm.valid">Save</button>
+      </form>
+</div>

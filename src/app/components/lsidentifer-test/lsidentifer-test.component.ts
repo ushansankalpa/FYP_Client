@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { LsidentiferTestService } from './lsidentifer-test.service';
 import { Observable, map } from 'rxjs';
@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
   providers:[MessageService]
 })
 export class LSIdentiferTestComponent implements OnInit {
+
+  @Input() user_id: string;
+
 
   enableBtn: boolean;
   ngOnInit(): void {
@@ -63,7 +66,13 @@ getRadioValue(questionIndex: number, value: string) {
 }
 
 postResult(){
-  const user_id = localStorage.getItem('user_id')
+  let user_id
+  if(this.user_id){
+    user_id = this.user_id
+  }else{
+    user_id = localStorage.getItem('user_id')
+  }
+  
   var b = this.responsesArray.map(function(item) {
     return parseInt(item, 10);
 });

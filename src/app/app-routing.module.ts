@@ -9,6 +9,7 @@ import { AuthGuard } from './_helpers/auth.guard';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { RecommendationComponent } from './components/recommendation/recommendation.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { InsertResourcesComponent } from './components/insert-resources/insert-resources.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,14 @@ const routes: Routes = [
   {
     path:'dashboard',
     component: AdminDashboardComponent,
+    // canActivate: [AuthGuard],
+    data: {
+      role: 'admin'
+    }
+  },
+  {
+    path:'insert/resources',
+    component: InsertResourcesComponent,
     // canActivate: [AuthGuard],
     data: {
       role: 'admin'

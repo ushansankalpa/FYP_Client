@@ -98,7 +98,6 @@ public single = [
   }
 
   protected onRequestUserSuccess(res:any){
-    debugger
     this.users = res.length;
     //this.spinner.hide();
   }

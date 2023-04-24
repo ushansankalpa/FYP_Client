@@ -6,6 +6,7 @@ import {MessageService} from 'primeng/api';
 import { RegisterService } from './register.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
+import {ToggleButtonModule} from 'primeng/togglebutton';
 
 @Component({
   selector: 'app-register',
@@ -22,6 +23,8 @@ import { Observable, map } from 'rxjs';
 export class RegisterComponent implements OnInit {
 
   form!: FormGroup;
+  isShow: boolean = false;
+  user_id: string;
 
   constructor(private fb: FormBuilder, private messageService: MessageService, private router: Router,
     private registerService: RegisterService) { }
@@ -32,6 +35,7 @@ export class RegisterComponent implements OnInit {
       email: [[], [Validators.required]],
       password: [[], [Validators.required]],
       cpassword: [[], [Validators.required]],
+      isQustions: [true],
       sentence: [[], [Validators.required]],
     });
   }
@@ -41,17 +45,30 @@ export class RegisterComponent implements OnInit {
     const object = this.createSaveObject();
     if(object.password === this.form.get('cpassword')?.value){
       this.subscribeToSaveResponse(this.registerService.save(object));
+    }else{
+      this.messageService.add({severity:'warn', summary: 'Warn', detail: 'Please fill all required fields'});
     }
   }
 
   createSaveObject() {
+    debugger
     const obj: any = {};
-    obj.fullname = this.form.get('fname')?.value;
-    obj.email = this.form.get('email')?.value.toLowerCase();
-    obj.password = this.form.get('password')?.value;
-    obj.sentence = this.form.get('sentence')?.value;
-    obj.role = 'user';
-    return obj;
+    if(this.form.value.isQustions == true){
+      obj.fullname = this.form.get('fname')?.value;
+      obj.email = this.form.get('email')?.value.toLowerCase();
+      obj.password = this.form.get('password')?.value;
+      obj.sentence = this.form.get('sentence')?.value;
+      obj.role = 'user';
+      return obj;
+    }else{
+      obj.fullname = this.form.get('fname')?.value;
+      obj.email = this.form.get('email')?.value.toLowerCase();
+      obj.password = this.form.get('password')?.value;
+      obj.sentence = '';
+      obj.role = 'user';
+      return obj;
+    }
+    
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<any[]>>) {
@@ -59,15 +76,23 @@ export class RegisterComponent implements OnInit {
         map((res: HttpResponse<any>) => res.body)
     ).subscribe(
         (res: any) => {
+          debugger
             console.log('Registration Successful');
-            this.messageService.add({severity:'success', summary:'Register Successfully', detail:'Your Registration is Successfully'});
-            this.router.navigate(['/']);
+            if(this.form.value.isQustions == true){
+              this.messageService.add({severity:'success', summary:'Register Successfully', detail:'Your Registration is Successfully'});
+              this.router.navigate(['/']);
+            }else{
+              this.user_id = res.id.toString();
+              this.isShow = true;
+            }
+            
         },
         (res: HttpErrorResponse) => this.onError(res.message)
     );
   }
 
   protected onError(errorMessage: string) {
+    this.messageService.add({severity:'warn', summary: 'Warn', detail: 'Message Content'});
     console.log(errorMessage);
   }
   

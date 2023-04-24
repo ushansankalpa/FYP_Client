@@ -37,6 +37,8 @@ import { Location } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { InsertResourcesComponent } from './components/insert-resources/insert-resources.component';
+import {ToggleButtonModule} from 'primeng/togglebutton';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     AdminDashboardComponent,
     NavBarComponent,
     RecommendationComponent,
-    ProfileComponent
+    ProfileComponent,
+    InsertResourcesComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -76,7 +79,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     FormsModule,
     CommonModule,
     NgxSpinnerModule,
-    NgxChartsModule
+    NgxChartsModule,
+    ToggleButtonModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

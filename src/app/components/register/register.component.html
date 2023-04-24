@@ -37,7 +37,7 @@
     </mat-step>
   </mat-stepper> -->
   <p-toast position="top-center"></p-toast>
-  <div class="bg">
+  <div class="bg" *ngIf="!isShow">
     <main class="main">
         <div class="container">
           <section class="wrapper">
@@ -70,7 +70,8 @@
                 <input type="password" name="cpassword" id="cpassword" class="input-field" placeholder="Confirm Password" formControlName="cpassword">
               </div>
 
-              <div class="input-control">
+              <p-toggleButton type="button" formControlName="isQustions" onLabel="I want questionnaire" offLabel="I don't want questionnaire" onIcon="pi pi-check" offIcon="pi pi-times" [style]="{'width': '23em', 'margin-bottom':'10px'}"></p-toggleButton>
+              <div class="input-control" *ngIf="this.form.get('isQustions')?.value">
                 <mat-form-field class="example-full-width" style="width: 100%;">
                     <mat-label>Leave a comment</mat-label>
                     <textarea matInput placeholder="Ex. I need reading books and watch youtube..." formControlName="sentence"></textarea>
@@ -78,10 +79,16 @@
               </div>
               
     
-              <div class="input-control" style="justify-content: center;">
+              <div class="input-control" style="justify-content: center;" *ngIf="this.form.get('isQustions')?.value">
                 <!-- <a href="#" class="text text-links">Forgot Password</a> -->
                 <input type="submit" name="submit" class="input-submit" value="Register">
               </div>
+
+              <div class="input-control" style="justify-content: center;" *ngIf="!this.form.get('isQustions')?.value">
+                <!-- <a href="#" class="text text-links">Forgot Password</a> -->
+                <input type="submit" name="submit" class="input-submit" value="NEXT">
+              </div>
+
             </form>
             <div class="striped">
               <span class="striped-line"></span>
@@ -118,3 +125,5 @@
         </div>
       </main>
       </div>
+
+      <app-lsidentifer-test [user_id]="user_id" *ngIf="isShow"></app-lsidentifer-test>
