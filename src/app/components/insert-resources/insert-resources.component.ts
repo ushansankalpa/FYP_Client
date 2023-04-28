@@ -34,14 +34,17 @@ export class InsertResourcesComponent implements OnInit {
     const file = (event.target as HTMLInputElement).files[0];
     // this.resourceForm.patchValue({ image: file.name });
     // this.resourceForm.get('image').updateValueAndValidity();
+    this.image = URL.createObjectURL(file)
 
     // Preview the uploaded image
     const reader = new FileReader();
+    
     reader.onload = () => {
       this.imagePreview = reader.result as string;
-      //this.image = reader.result;
+      this.image = this.imagePreview;
     };
     reader.readAsDataURL(file);
+    
     //this.image = reader.result;
   }
 

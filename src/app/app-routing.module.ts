@@ -61,6 +61,14 @@ const routes: Routes = [
     }
   },
   {
+    path:'export',
+    component: ProfileComponent,
+    // canActivate: [AuthGuard],
+    data: {
+      role: 'admin'
+    }
+  },
+  {
     path:'navbar',
     component: NavBarComponent
   },

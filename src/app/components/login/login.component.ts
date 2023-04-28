@@ -71,6 +71,7 @@ export class LoginComponent implements OnInit {
                     if (data.id !== undefined) {
                       localStorage.setItem('user_id', data.id.toString());
                       localStorage.setItem('user_name', data.fullname.toString());
+                      localStorage.setItem('learning_style', data.learning_style);
                     }
                     localStorage.setItem('user', JSON.stringify(data));
                     this.messageService.add({severity:'success', summary:'Login Successfully', detail:'Your Login is Successfully'});

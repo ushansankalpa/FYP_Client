@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
 import { Observable, filter, map } from 'rxjs';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { SelectItem } from 'primeng/api';
+import { Message, SelectItem } from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { FormBuilder } from '@angular/forms';
@@ -19,19 +19,43 @@ export class HomeComponent implements OnInit {
 
   resources!: Resources[];
 
-  sortOptions!: SelectItem[];
+  typeOptions!: SelectItem[];
+  fieldOptions!: SelectItem[];
 
   sortOrder!: number;
 
   sortField!: string;
+  msgs1: Message[];
+
+  type:string ;
+  field:string;
+
+  enableBtn: boolean = true;
+
 
   constructor(private homeService: HomeService,private primengConfig: PrimeNGConfig,private ms: MessageService,
-    private fb: FormBuilder,private spinner: NgxSpinnerService) { }
+    private fb: FormBuilder,private spinner: NgxSpinnerService) { 
+      this.typeOptions = [
+        {label: 'All', value: 'all'},
+        {label: 'Book', value: 'Book'},
+        {label: 'Video', value: 'Video'},
+        {label: 'Audio', value: 'Audio'}
+    ];
+      this.fieldOptions = [
+        {label: 'All', value: 'all'},
+        {label: 'Java', value: 'java'},
+        {label: 'Python', value: 'python'},
+        {label: 'Programming', value: 'programming'},
+        {label: 'Algorithm', value: 'algorithm'}
+    ];
+    }
 
   ngOnInit(): void {
+    
     // this.homeService.get_all_resources().subscribe((response: HttpResponse<any>) => {
     //   this.resources = response.body;
     // });
+    const learning_styles = localStorage.getItem('learning_style');
     
     this.primengConfig.ripple = true;
     this.getData();
@@ -40,6 +64,13 @@ export class HomeComponent implements OnInit {
     //   this.spinner.hide();
       
     // }, 1000);
+    this.msgs1 = [
+      // {severity:'success', summary:'Success', detail:'Your learning style is '+learning_styles ,icon: 'pi-file'},
+      // {severity:'info', summary:'Info', detail:'Message Content'},
+      // {severity:'warn', summary:'Warning', detail:'Message Content'},
+      // {severity:'error', summary:'Error', detail:'Message Content'},
+      {severity:'success', summary:'Learning Style', detail:'Your learning style is '+learning_styles, icon: 'pi-file'}
+  ];
   }
 
   filter(event: Event) {
@@ -80,6 +111,31 @@ export class HomeComponent implements OnInit {
     
   }
 
+  onTypeChange(event){
+    debugger
+    this.type = event.value;
+    const obj = {type: this.type, field: this.field}
+    // if(this.field != undefined && this.type != undefined){
+    //   this.enableBtn = false;
+    // }
+    this.subscribeToSearchResponse(this.homeService.search(obj));
+  }
+
+  onFieldChange(event){
+    debugger
+    this.field = event.value;
+    const obj = {type: this.type, field: this.field}
+    // if(this.field != undefined && this.type != undefined){
+    //   this.enableBtn = false;
+    // }
+    this.subscribeToSearchResponse(this.homeService.search(obj));
+  }
+
+  search(){
+    const obj = {type: this.type, field: this.field}
+    this.subscribeToSearchResponse(this.homeService.search(obj));
+  }
+
   handleOnCancel(){
     this.ms.add({
       severity: 'error',
@@ -97,6 +153,21 @@ export class HomeComponent implements OnInit {
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<any[]>>) {
+    result.pipe(
+        map((res: HttpResponse<any>) => res.body)
+    ).subscribe(
+        (res: any) => {
+          this.ms.add({
+            severity: 'success',
+            summary: 'Rating Changed',
+            detail: 'New Value: '
+        });
+        },
+        (res: HttpErrorResponse) => this.onError(res.message)
+    );
+  }
+
+  protected subscribeToSearchResponse(result: Observable<HttpResponse<any[]>>) {
     result.pipe(
         map((res: HttpResponse<any>) => res.body)
     ).subscribe(

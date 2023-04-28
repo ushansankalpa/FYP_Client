@@ -18,6 +18,7 @@ export class User {
     token?: string;
     role?: string;
     access_token?: User;
+    learning_style?:string
 }
 
 

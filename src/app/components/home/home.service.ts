@@ -48,8 +48,8 @@ export class HomeService {
     //     return this.http.get<any>(`${environment.apiUrl}/api/user`, { observe: 'response' });
     // }
 
-    // search(data: any): Observable<EntityArrayResponseType> {
-    //     return this.http.post<any>(`${environment.apiUrl}/api/search`, data, { observe: 'response' });
-    // }
+    search(data: any): Observable<EntityArrayResponseType> {
+        return this.http.post<any>(`${environment.apiUrl}/search/resources`, data, { observe: 'response' });
+    }
 
 }

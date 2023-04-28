@@ -39,6 +39,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { InsertResourcesComponent } from './components/insert-resources/insert-resources.component';
 import {ToggleButtonModule} from 'primeng/togglebutton';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 @NgModule({
   declarations: [
@@ -80,7 +82,9 @@ import {ToggleButtonModule} from 'primeng/togglebutton';
     CommonModule,
     NgxSpinnerModule,
     NgxChartsModule,
-    ToggleButtonModule
+    ToggleButtonModule,
+    MessagesModule,
+    MessageModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
