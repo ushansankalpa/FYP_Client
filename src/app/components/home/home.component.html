@@ -122,7 +122,7 @@
                       <div class="product-name" style="margin-bottom: 15px;">{{product.title}}</div>
                       <img [src]="product.image" alt="Resource Image" style="height: 200px;width: 200px;" class="bd-placeholder-img card-img-top">
                       <div class="product-description" style="margin-top: 15px;">{{ product.desc | slice:0:250}}{{ product.desc.length > 150 ? '...' : '' }}</div>
-                      <p-rating  [stars]="10"  (onRate)="resRatings($event, product.res_id)" (onCancel)="handleOnCancel()"></p-rating>
+                      <p-rating  [stars]="10"  (onRate)="resRatings($event, product.res_id)" (onCancel)="handleOnCancel(product.res_id)"></p-rating>
                       <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{product.type}}</span>
                   </div>
                   <div class="product-grid-item-bottom" style="justify-content: center;">
@@ -147,7 +147,7 @@
                       <div class="product-name">{{ product.title | slice:0:25}}{{ product.title.length > 150 ? '...' : '' }}</div>
                       <img [src]="product.image" alt="Resource Image" style="height: 200px;width: 200px;" class="bd-placeholder-img card-img-top">
                       <div class="product-description">{{ product.desc | slice:0:150}}{{ product.desc.length > 150 ? '...' : '' }}</div>
-                      <p-rating  [stars]="10"  (onRate)="resRatings($event,product.res_id)" (onCancel)="handleOnCancel()"></p-rating>
+                      <p-rating  [stars]="10"  (onRate)="resRatings($event,product.res_id)" (onCancel)="handleOnCancel(product.res_id)"></p-rating>
                   </div>
                   <div class="product-grid-item-bottom" style="justify-content: center;">
                     <div style="justify-content: center;margin-top: 10px;">

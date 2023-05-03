@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <form [formGroup]="resourceForm" (ngSubmit)="onSubmit()" class="my-4 p-4 border border-secondary rounded">
         <div class="form-group">
           <label>Title</label>
@@ -36,4 +36,58 @@
       
         <button type="submit" class="btn btn-primary" [disabled]="!resourceForm.valid">Save</button>
       </form>
+</div> -->
+
+
+<div class="container">
+  <form [formGroup]="resourceForm" (ngSubmit)="onSubmit()" class="my-4 p-4 border border-secondary rounded">
+    <div class="form-group">
+      <!-- <label>Title</label> -->
+      <input type="text" placeholder="Title" class="form-control form-control-sm" formControlName="title">
+    </div>
+  
+    <div class="form-group">
+      <!-- <label>Description</label> -->
+      <textarea class="form-control" placeholder="Description" formControlName="desc"></textarea>
+    </div>
+  
+    <div class="form-group">
+      <!-- <label>Link</label> -->
+      <input type="text" placeholder="Link" class="form-control" formControlName="link">
+    </div>
+  
+    <div class="form-group">
+      <!-- <label>Image</label> -->
+      <div class="custom-file">
+        <label for="formFile" class="form-label">Image</label>
+        <input class="form-control" type="file" id="formFile" accept=".png, .jpg, .jpeg" (change)="onImageSelected($event)" formControlName="image">
+        <!-- <input type="file" class="custom-file-input" accept=".png, .jpg, .jpeg" (change)="onImageSelected($event)" formControlName="image">
+        <label class="custom-file-label">{{ resourceForm.get('image').value?.name || 'Choose file' }}</label> -->
+      </div>
+      <!-- <img [src]="imagePreview" *ngIf="imagePreview" class="img-fluid mt-2"> -->
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <!-- <label>Type</label> -->
+          <!-- <input type="text" placeholder="Type" class="form-control" formControlName="type"> -->
+          <select class="form-select"  aria-label="Type" formControlName="type">
+            <!-- <option selected>Open this select menu</option> -->
+            <option value="Book">Book</option>
+            <option value="Video">Video</option>
+            <option value="Audio">Audio</option>
+          </select>
+        </div>    
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <!-- <label>Field</label> -->
+          <input type="text" placeholder="Field" class="form-control" formControlName="field">
+        </div>
+      </div>
+    </div>
+  
+    <button type="Insert Data" class="btn btn-primary" [disabled]="!resourceForm.valid">Save</button>
+  </form>
 </div>

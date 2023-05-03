@@ -61,11 +61,11 @@ const routes: Routes = [
     }
   },
   {
-    path:'export',
+    path:'my_fav',
     component: ProfileComponent,
     // canActivate: [AuthGuard],
     data: {
-      role: 'admin'
+      role: 'user'
     }
   },
   {

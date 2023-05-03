@@ -9,13 +9,13 @@ type EntityResponseType = HttpResponse<any>;
 
 
 @Injectable({ providedIn: 'root' })
-export class RecommendationService {
+export class ProfileService {
     constructor(private http: HttpClient) {
 
     }
 
-    get_recommend_resources(user_id:any) {
-        return this.http.get<any>(`${environment.apiUrl}/res/recommendations/${user_id}`, { observe: 'response' });
+    get_all_resources(user_id:any) {
+        return this.http.get<any>(`${environment.apiUrl}/res/fav/${user_id}`, { observe: 'response' });
     }
 
     // query(req?: any): Observable<EntityArrayResponseType> {
@@ -48,8 +48,8 @@ export class RecommendationService {
     //     return this.http.get<any>(`${environment.apiUrl}/api/user`, { observe: 'response' });
     // }
 
-    // search(data: any): Observable<EntityArrayResponseType> {
-    //     return this.http.post<any>(`${environment.apiUrl}/api/search`, data, { observe: 'response' });
-    // }
+    search(data: any): Observable<EntityArrayResponseType> {
+        return this.http.post<any>(`${environment.apiUrl}/search/resources`, data, { observe: 'response' });
+    }
 
 }

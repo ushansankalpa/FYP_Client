@@ -107,12 +107,10 @@ export class HomeComponent implements OnInit {
     //const user_id = parseInt(localStorage.getItem('user_id'));
     const object = this.createSaveObject(val,res_id, user_id);
     this.subscribeToSaveResponse(this.homeService.createRating(object, res_id, user_id));
-    
-    
   }
 
+
   onTypeChange(event){
-    debugger
     this.type = event.value;
     const obj = {type: this.type, field: this.field}
     // if(this.field != undefined && this.type != undefined){
@@ -122,7 +120,6 @@ export class HomeComponent implements OnInit {
   }
 
   onFieldChange(event){
-    debugger
     this.field = event.value;
     const obj = {type: this.type, field: this.field}
     // if(this.field != undefined && this.type != undefined){
@@ -136,20 +133,34 @@ export class HomeComponent implements OnInit {
     this.subscribeToSearchResponse(this.homeService.search(obj));
   }
 
-  handleOnCancel(){
+  handleOnCancel(res_id:any){
+    const user_id_str = localStorage.getItem('user_id');
+    const user_id = user_id_str ? parseInt(user_id_str) : 0;
+    //const user_id = parseInt(localStorage.getItem('user_id'));
+    const object = this.createSaveObject(0,res_id, user_id);
+    this.subscribeToSaveResponse(this.homeService.createRating(object, res_id, user_id));
     this.ms.add({
       severity: 'error',
       summary: 'Rating Removed',
-      detail: 'onCancel Event Triggered',
+      detail: 'Rating Removed',
     });
   }
 
   createSaveObject(val:any,res_id:any, user_id:any) {
-    const obj: any = {};
-    obj.res_id = res_id;
-    obj.user_id = user_id;
-    obj.rate = val.value;
-    return obj;
+    if(val === 0){
+      const obj: any = {};
+      obj.res_id = res_id;
+      obj.user_id = user_id;
+      obj.rate = 0;
+      return obj;
+    }else{
+      const obj: any = {};
+      obj.res_id = res_id;
+      obj.user_id = user_id;
+      obj.rate = val.value;
+      return obj;
+    }
+    
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<any[]>>) {

@@ -30,18 +30,18 @@ export class InsertResourcesComponent implements OnInit {
   }
 
   // Triggered when the user selects a file to upload
-  onImageSelected(event: Event) {
+  onImageSelected(event) {
     const file = (event.target as HTMLInputElement).files[0];
-    // this.resourceForm.patchValue({ image: file.name });
+    //this.resourceForm.patchValue({ image: file });
     // this.resourceForm.get('image').updateValueAndValidity();
-    this.image = URL.createObjectURL(file)
+    this.image = event.target.files[0];
 
     // Preview the uploaded image
     const reader = new FileReader();
     
     reader.onload = () => {
       this.imagePreview = reader.result as string;
-      this.image = this.imagePreview;
+      this.image = this.imagePreview.split(',')[1];
     };
     reader.readAsDataURL(file);
     

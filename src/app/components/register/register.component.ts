@@ -51,7 +51,6 @@ export class RegisterComponent implements OnInit {
   }
 
   createSaveObject() {
-    debugger
     const obj: any = {};
     if(this.form.value.isQustions == true){
       obj.fullname = this.form.get('fname')?.value;
@@ -76,7 +75,6 @@ export class RegisterComponent implements OnInit {
         map((res: HttpResponse<any>) => res.body)
     ).subscribe(
         (res: any) => {
-          debugger
             console.log('Registration Successful');
             if(this.form.value.isQustions == true){
               this.messageService.add({severity:'success', summary:'Register Successfully', detail:'Your Registration is Successfully'});

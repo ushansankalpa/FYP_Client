@@ -26,6 +26,10 @@ export class AdminDashboardService {
         return this.http.get<any>(`${environment.apiUrl}/user/data`, { observe: 'response' });
     }
 
+    export_csv() {
+        return this.http.get<any>(`${environment.apiUrl}/export-csv`, { observe: 'response' });
+    }
+
     // query(req?: any): Observable<EntityArrayResponseType> {
     //     // const options = createRequestOption(req);
     //      return this.http.get<any>(`${environment.apiUrl}/api/questions`, { params: req, observe: 'response' });

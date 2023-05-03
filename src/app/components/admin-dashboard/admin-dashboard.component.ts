@@ -106,4 +106,16 @@ public single = [
   
   }
 
+  export(){
+    return  this.homeService
+        .export_csv()
+        .pipe(
+            filter((res: HttpResponse<any>) => res.ok),
+            map((res: HttpResponse<any>) => res.body)
+        ).subscribe(
+            (res: any) => this.onRequestUserSuccess(res),
+            (res: any) => this.onRequestError(res.message)
+        );
+  }
+
 }
