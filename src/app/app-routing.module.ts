@@ -47,7 +47,7 @@ const routes: Routes = [
   {
     path:'dashboard',
     component: AdminDashboardComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     data: {
       role: 'admin'
     }
@@ -55,7 +55,7 @@ const routes: Routes = [
   {
     path:'insert/resources',
     component: InsertResourcesComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     data: {
       role: 'admin'
     }
@@ -63,7 +63,7 @@ const routes: Routes = [
   {
     path:'my_fav',
     component: ProfileComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     data: {
       role: 'user'
     }

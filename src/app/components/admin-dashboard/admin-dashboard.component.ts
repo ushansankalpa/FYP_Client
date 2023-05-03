@@ -2,11 +2,13 @@ import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { filter, map } from 'rxjs';
 import { AdminDashboardService } from './admin-dashboard.service';
+import { Message, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
-  styleUrls: ['./admin-dashboard.component.scss']
+  styleUrls: ['./admin-dashboard.component.scss'],
+  providers: [MessageService]
 })
 export class AdminDashboardComponent implements OnInit {
 
@@ -34,13 +36,14 @@ export class AdminDashboardComponent implements OnInit {
   colorScheme = {
     domain: ['#9370DB', '#87CEFA', '#FA8072', '#FF7F50', '#90EE90', '#9370DB']
   };
+  msgs1: Message[]
   //pie
   showLabels = true;
   // data goes here
 public single = [
 ];
 
-  constructor(private homeService: AdminDashboardService) { }
+  constructor(private homeService: AdminDashboardService, private ms: MessageService) { }
 
   ngOnInit(): void {
     this.getData();
@@ -113,7 +116,12 @@ public single = [
             filter((res: HttpResponse<any>) => res.ok),
             map((res: HttpResponse<any>) => res.body)
         ).subscribe(
-            (res: any) => this.onRequestUserSuccess(res),
+            (res: any) => {
+              this.msgs1 = [
+                {severity:'success', summary:'Export ratings.csv', detail:'Succefully Export CSV', icon: 'pi-file'}
+            ];
+            this.ms.add({severity:'success', summary:'Export ratings.csv', detail:'Succefully Export CSV', icon: 'pi-file'});
+            },
             (res: any) => this.onRequestError(res.message)
         );
   }

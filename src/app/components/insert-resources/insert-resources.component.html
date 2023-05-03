@@ -40,6 +40,7 @@
 
 
 <div class="container">
+  <h1>INSERT RESOURCES</h1>
   <form [formGroup]="resourceForm" (ngSubmit)="onSubmit()" class="my-4 p-4 border border-secondary rounded">
     <div class="form-group">
       <!-- <label>Title</label> -->
@@ -88,6 +89,6 @@
       </div>
     </div>
   
-    <button type="Insert Data" class="btn btn-primary" [disabled]="!resourceForm.valid">Save</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!resourceForm.valid">INSERT</button>
   </form>
 </div>
